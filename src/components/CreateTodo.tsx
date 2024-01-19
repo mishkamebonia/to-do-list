@@ -1,14 +1,9 @@
 import "./CreateTodo.scss";
-import { TodoObject } from "../App";
+import { TodoProps } from "../App";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-interface CreateTodoProps {
-  todos: TodoObject[];
-  setTodos: React.Dispatch<React.SetStateAction<TodoObject[]>>;
-}
-
-const CreateTodo: React.FC<CreateTodoProps> = ({ todos, setTodos }) => {
+const CreateTodo = ({ todos, setTodos }: TodoProps) => {
   const [titleValue, setTitleValue] = useState("");
   const [aboutValue, setAboutValue] = useState("");
 

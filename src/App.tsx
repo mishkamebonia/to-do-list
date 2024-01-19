@@ -3,10 +3,15 @@ import "./App.scss";
 import CreateTodo from "./components/CreateTodo";
 import Tasks from "./components/Tasks";
 
-export interface TodoObject {
+interface TodoObject {
   id: string;
   title: string;
   about: string;
+}
+
+export interface TodoProps {
+  todos: TodoObject[];
+  setTodos: React.Dispatch<React.SetStateAction<TodoObject[]>>;
 }
 
 function App() {
@@ -16,7 +21,7 @@ function App() {
     <div>
       <div className="container">
         <CreateTodo todos={todos} setTodos={setTodos} />
-        <Tasks todos={todos} />
+        <Tasks todos={todos} setTodos={setTodos} />
       </div>
     </div>
   );
