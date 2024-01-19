@@ -13,9 +13,13 @@ const Task = ({ todos }: TaskProps) => {
       {todos.map((todo) => {
         return (
           <div key={todo.id} className="task">
-            <h3>{todo.title}</h3>
-            <p>{todo.about}</p>
-            <button>remove</button>
+            <section>
+              <h3>{todo.title}</h3>
+              <p>{todo.about}</p>
+            </section>
+            <button>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
           </div>
         );
       })}

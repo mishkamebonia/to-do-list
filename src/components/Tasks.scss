@@ -1,4 +1,39 @@
+@import "../scss/colors.scss";
+
 .tasks {
   margin: 33px 0;
-  color: white;
+  color: $mainTextColor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    min-width: 428px;
+    border-radius: 8px;
+    border: 2px solid $markColorHover;
+    background: $lightBG;
+    padding: 16px 16px 10px;
+
+    h3 {
+      margin-bottom: 4px;
+    }
+
+    section {
+      width: 300px;
+      overflow: hidden;
+    }
+
+    button {
+      width: 32px;
+      height: 32px;
+
+      i {
+        font-size: 16px;
+      }
+    }
+  }
 }
