@@ -13,9 +13,11 @@ function App() {
   const [todos, setTodos] = useState<TodoObject[]>([]);
 
   return (
-    <div className="container">
-      <CreateTodo todos={todos} setTodos={setTodos} />
-      <Tasks todos={todos} />
+    <div>
+      <div className="container">
+        <CreateTodo todos={todos} setTodos={setTodos} />
+        <Tasks todos={todos} />
+      </div>
     </div>
   );
 }

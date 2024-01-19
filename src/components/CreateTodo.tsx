@@ -13,16 +13,20 @@ const CreateTodo: React.FC<CreateTodoProps> = ({ todos, setTodos }) => {
   const [aboutValue, setAboutValue] = useState("");
 
   const addTodo = () => {
-    const newItem = [
-      ...todos,
-      {
-        id: uuidv4(),
-        title: titleValue,
-        about: aboutValue,
-      },
-    ];
+    if (titleValue !== "" && aboutValue !== "") {
+      const newItem = [
+        ...todos,
+        {
+          id: uuidv4(),
+          title: titleValue,
+          about: aboutValue,
+        },
+      ];
 
-    setTodos(newItem);
+      setTodos(newItem);
+      setTitleValue("");
+      setAboutValue("");
+    }
   };
 
   return (
