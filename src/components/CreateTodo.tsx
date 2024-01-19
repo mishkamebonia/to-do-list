@@ -2,7 +2,6 @@ import "./CreateTodo.scss";
 import { TodoObject } from "../App";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import button from "../assets/buttonAdd.png";
 
 interface CreateTodoProps {
   todos: TodoObject[];
@@ -43,7 +42,7 @@ const CreateTodo: React.FC<CreateTodoProps> = ({ todos, setTodos }) => {
         />
       </section>
       <button onClick={addTodo}>
-        <img src={button} alt="button" />
+        <i className="fa-solid fa-plus"></i>
       </button>
     </div>
   );
