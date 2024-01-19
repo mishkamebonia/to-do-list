@@ -1,12 +1,12 @@
 import "./Tasks.scss";
-import { TodoObject } from "../App";
+import { TodoProps } from "../App";
 
-interface TaskProps {
-  todos: TodoObject[];
-}
-
-const Task = ({ todos }: TaskProps) => {
-  console.log(todos);
+const Task = ({ todos, setTodos }: TodoProps) => {
+  const removeTask = (id: string) => {
+    console.log(id);
+    const findId = todos.filter((todo) => todo.id !== id);
+    setTodos(findId);
+  };
 
   return (
     <div className="tasks">
@@ -22,7 +22,7 @@ const Task = ({ todos }: TaskProps) => {
                 <h3>{todo.title}</h3>
                 <p>{todo.about}</p>
               </section>
-              <button>
+              <button onClick={() => removeTask(todo.id)}>
                 <i className="fa-solid fa-xmark"></i>
               </button>
             </div>
