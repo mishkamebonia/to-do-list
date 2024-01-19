@@ -1,9 +1,9 @@
-import "./CreateTodo.scss";
+import "./Form.scss";
 import { TodoProps } from "../App";
 import { useState } from "react";
 import { addTask } from "../functions/createTask";
 
-const CreateTodo = ({ todos, setTodos }: TodoProps) => {
+const Form = ({ todos, setTodos }: TodoProps) => {
   const [titleValue, setTitleValue] = useState("");
   const [aboutValue, setAboutValue] = useState("");
 
@@ -36,4 +36,4 @@ const CreateTodo = ({ todos, setTodos }: TodoProps) => {
   );
 };
 
-export default CreateTodo;
+export default Form;

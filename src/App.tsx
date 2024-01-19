@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.scss";
-import CreateTodo from "./components/CreateTodo";
+import Form from "./components/Form";
 import Tasks from "./components/Tasks";
 
 interface TodoObject {
@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       <div className="container">
-        <CreateTodo todos={todos} setTodos={setTodos} />
+        <Form todos={todos} setTodos={setTodos} />
         <Tasks todos={todos} setTodos={setTodos} />
       </div>
     </div>
