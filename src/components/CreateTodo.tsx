@@ -1,16 +1,52 @@
 import "./CreateTodo.scss";
+import { TodoObject } from "../App";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import button from "../assets/buttonAdd.png";
 
-export default function CreateTodo() {
+interface CreateTodoProps {
+  todos: TodoObject[];
+  setTodos: React.Dispatch<React.SetStateAction<TodoObject[]>>;
+}
+
+const CreateTodo: React.FC<CreateTodoProps> = ({ todos, setTodos }) => {
+  const [titleValue, setTitleValue] = useState("");
+  const [aboutValue, setAboutValue] = useState("");
+
+  const addTodo = () => {
+    const newItem = [
+      ...todos,
+      {
+        id: uuidv4(),
+        title: titleValue,
+        about: aboutValue,
+      },
+    ];
+
+    setTodos(newItem);
+  };
+
   return (
     <div className="create-item">
       <section>
-        <input type="text" placeholder="Title..." />
-        <input type="text" placeholder="About..." />
+        <input
+          type="text"
+          placeholder="Title..."
+          value={titleValue}
+          onChange={(e) => setTitleValue(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="About..."
+          value={aboutValue}
+          onChange={(e) => setAboutValue(e.target.value)}
+        />
       </section>
-      <button>
+      <button onClick={addTodo}>
         <img src={button} alt="button" />
       </button>
     </div>
   );
-}
+};
+
+export default CreateTodo;
