@@ -1,4 +1,5 @@
 @import "../scss/colors.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 .tasks {
   margin: 33px 0;
@@ -7,33 +8,70 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
+}
 
-  .task {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    min-width: 428px;
-    border-radius: 8px;
-    border: 2px solid $markColorHover;
-    background: $lightBG;
-    padding: 16px 16px 10px;
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid $markColorHover;
+  background: $lightBG;
+  padding: 16px 16px 10px;
 
-    h3 {
-      margin-bottom: 4px;
+  h3 {
+    margin-bottom: 4px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  section {
+    width: 300px;
+    overflow: hidden;
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+
+    i {
+      font-size: 16px;
+    }
+  }
+}
+
+.empty-tasks {
+  margin-top: 70px;
+
+  p {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 64px;
+      height: 3px;
+      background: $markColor;
+      top: -14px;
+      right: 16px;
     }
 
-    section {
-      width: 300px;
-      overflow: hidden;
-    }
-
-    button {
-      width: 32px;
-      height: 32px;
-
-      i {
-        font-size: 16px;
-      }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 64px;
+      height: 3px;
+      background: $markColor;
+      bottom: -14px;
+      right: 16px;
     }
   }
 }
