@@ -1,27 +1,16 @@
 import "./CreateTodo.scss";
 import { TodoProps } from "../App";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { addTask } from "../functions/createTask";
 
 const CreateTodo = ({ todos, setTodos }: TodoProps) => {
   const [titleValue, setTitleValue] = useState("");
   const [aboutValue, setAboutValue] = useState("");
 
-  const addTodo = () => {
-    if (titleValue !== "" && aboutValue !== "") {
-      const newItem = [
-        ...todos,
-        {
-          id: uuidv4(),
-          title: titleValue,
-          about: aboutValue,
-        },
-      ];
-
-      setTodos(newItem);
-      setTitleValue("");
-      setAboutValue("");
-    }
+  const handleAddTask = () => {
+    addTask(titleValue, aboutValue, { todos, setTodos });
+    setTitleValue("");
+    setAboutValue("");
   };
 
   return (
@@ -40,7 +29,7 @@ const CreateTodo = ({ todos, setTodos }: TodoProps) => {
           onChange={(e) => setAboutValue(e.target.value)}
         />
       </section>
-      <button onClick={addTodo}>
+      <button onClick={handleAddTask}>
         <i className="fa-solid fa-plus"></i>
       </button>
     </div>
