@@ -12,7 +12,7 @@ const Task = ({ todos, setTodos }: TodoProps) => {
   };
 
   const handleToggleAccordion = (id: string) => {
-    toggleAccordion(id, { activeAccordion, setActiveAccordion });
+    toggleAccordion(id, activeAccordion, setActiveAccordion);
   };
 
   return (
