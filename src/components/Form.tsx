@@ -8,9 +8,10 @@ const Form = ({ todos, setTodos }: TodoProps) => {
   const [aboutValue, setAboutValue] = useState("");
 
   const handleAddTask = () => {
-    addTask(titleValue, aboutValue, { todos, setTodos });
-    setTitleValue("");
-    setAboutValue("");
+    addTask(titleValue, setTitleValue, aboutValue, setAboutValue, {
+      todos,
+      setTodos,
+    });
   };
 
   return (

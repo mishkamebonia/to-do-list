@@ -3,7 +3,9 @@ import { TodoProps } from "../App";
 
 export const addTask = (
   titleValue: string,
+  setTitleValue: React.Dispatch<React.SetStateAction<string>>,
   aboutValue: string,
+  setAboutValue: React.Dispatch<React.SetStateAction<string>>,
   { todos, setTodos }: TodoProps
 ) => {
   if (titleValue !== "" && aboutValue !== "") {
@@ -16,6 +18,8 @@ export const addTask = (
       },
     ];
 
+    setTitleValue("");
+    setAboutValue("");
     setTodos(newItem);
   }
 };
