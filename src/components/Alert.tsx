@@ -17,7 +17,7 @@ const Alert = (props: any) => {
 
   return (
     <div className="alert-remove">
-      <h3>Delete this task?</h3>
+      <p>Delete this task?</p>
       <section>
         <button onClick={() => onSubmit(id)}>Yes</button>
         <button onClick={() => onCancel(id)}>No</button>
