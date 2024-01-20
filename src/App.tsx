@@ -3,7 +3,7 @@ import "./App.scss";
 import Form from "./components/Form";
 import Tasks from "./components/Tasks";
 
-interface TodoObject {
+export interface TodoObject {
   id: string;
   title: string;
   about: string;
