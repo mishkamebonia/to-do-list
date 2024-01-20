@@ -43,8 +43,15 @@ const Task = ({ todos, setTodos }: TodoProps) => {
               </div>
               {activeAccordion === todo.id && (
                 <div className="addition-btns">
-                  <p>123</p>
-                  <p>456</p>
+                  <button>
+                    <i className="fa-solid fa-share-nodes"></i>
+                  </button>
+                  <button>
+                    <i className="fa-solid fa-info"></i>
+                  </button>
+                  <button>
+                    <i className="fa-solid fa-pen"></i>
+                  </button>
                 </div>
               )}
             </div>
