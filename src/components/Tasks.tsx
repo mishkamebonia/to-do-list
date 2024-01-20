@@ -5,7 +5,9 @@ import { alertRemoveTask } from "../functions/alertRemoveTask";
 import { toggleAccordion } from "../functions/accordionTask";
 import Alert from "./Alert";
 
-const Task = ({ todos, setTodos }: TodoProps) => {
+const Task = (props: TodoProps) => {
+  const { todos, setTodos } = props;
+
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
   const [activeAlert, setActiveAlert] = useState<string | null>(null);
 

@@ -3,7 +3,9 @@ import { TodoProps } from "../App";
 import { useState } from "react";
 import { addTask } from "../functions/createTask";
 
-const Form = ({ todos, setTodos }: TodoProps) => {
+const Form = (props: TodoProps) => {
+  const { todos, setTodos } = props;
+
   const [titleValue, setTitleValue] = useState("");
   const [aboutValue, setAboutValue] = useState("");
 

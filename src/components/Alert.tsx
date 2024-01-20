@@ -1,21 +1,26 @@
+import "./Alert.scss";
+import { TodoObject } from "../App";
+
 const Alert = (props: any) => {
+  const { id, todos, setTodos, activeAlert, setActiveAlert } = props;
+
   const onSubmit = (id: string) => {
-    const findId = props.todos.filter((todo: any) => todo.id !== id);
-    props.setTodos(findId);
+    const findId = todos.filter((todo: TodoObject) => todo.id !== id);
+    setTodos(findId);
   };
 
   const onCancel = (id: string) => {
-    if (id === props.activeAlert) {
-      props.setActiveAlert(null);
+    if (id === activeAlert) {
+      setActiveAlert(null);
     }
   };
 
   return (
-    <div className="alert">
+    <div className="alert-remove">
       <h3>Delete this task?</h3>
       <section>
-        <button onClick={() => onSubmit(props.id)}>Yes</button>
-        <button onClick={() => onCancel(props.id)}>No</button>
+        <button onClick={() => onSubmit(id)}>Yes</button>
+        <button onClick={() => onCancel(id)}>No</button>
       </section>
     </div>
   );
