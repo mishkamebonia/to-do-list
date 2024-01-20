@@ -1,7 +1,15 @@
 import "./Alert.scss";
 import { TodoObject } from "../App";
 
-const Alert = (props: any) => {
+interface alertProps {
+  id: string;
+  todos: TodoObject[];
+  setTodos: React.Dispatch<React.SetStateAction<TodoObject[]>>;
+  activeAlert: string | null;
+  setActiveAlert: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+const Alert = (props: alertProps) => {
   const { id, todos, setTodos, activeAlert, setActiveAlert } = props;
 
   const onSubmit = (id: string) => {
