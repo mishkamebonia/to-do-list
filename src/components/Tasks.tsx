@@ -1,14 +1,16 @@
 import "./Tasks.scss";
 import { useState } from "react";
 import { TodoProps } from "../App";
-import { removeTask } from "../functions/removeTask";
+import { alertRemoveTask } from "../functions/alertRemoveTask";
 import { toggleAccordion } from "../functions/accordionTask";
+import Alert from "./Alert";
 
 const Task = ({ todos, setTodos }: TodoProps) => {
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
+  const [activeAlert, setActiveAlert] = useState<string | null>(null);
 
-  const handleRemoveTask = (id: string) => {
-    removeTask(id, { todos, setTodos });
+  const handleAlertRemoveTask = (id: string) => {
+    alertRemoveTask(id, activeAlert, setActiveAlert);
   };
 
   const handleToggleAccordion = (id: string) => {
@@ -34,7 +36,7 @@ const Task = ({ todos, setTodos }: TodoProps) => {
                   <p>{todo.about}</p>
                 </section>
                 <button
-                  onClick={() => handleRemoveTask(todo.id)}
+                  onClick={() => handleAlertRemoveTask(todo.id)}
                   className="remove-btn"
                 >
                   <i className="fa-solid fa-xmark"></i>
@@ -52,6 +54,15 @@ const Task = ({ todos, setTodos }: TodoProps) => {
                     <i className="fa-solid fa-pen"></i>
                   </button>
                 </div>
+              )}
+              {activeAlert === todo.id && (
+                <Alert
+                  id={todo.id}
+                  todos={todos}
+                  setTodos={setTodos}
+                  activeAlert={activeAlert}
+                  setActiveAlert={setActiveAlert}
+                ></Alert>
               )}
             </div>
           );
