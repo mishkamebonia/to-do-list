@@ -16,12 +16,15 @@ const Alert = (props: any) => {
   };
 
   return (
-    <div className="alert-remove">
-      <p>Delete this task?</p>
-      <section>
-        <button onClick={() => onSubmit(id)}>Yes</button>
-        <button onClick={() => onCancel(id)}>No</button>
-      </section>
+    <div>
+      <div className="alert-remove">
+        <p>Delete this task?</p>
+        <section>
+          <button onClick={() => onSubmit(id)}>Yes</button>
+          <button onClick={() => onCancel(id)}>No</button>
+        </section>
+      </div>
+      <div className="module-background" onClick={() => onCancel(id)}></div>
     </div>
   );
 };
