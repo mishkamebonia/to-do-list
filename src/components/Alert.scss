@@ -1,0 +1,32 @@
+@import "../scss/colors.scss";
+
+.alert-remove {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 280px;
+  border-top: 4px solid $markColorHover;
+  border-radius: 4px;
+  background: $mainBG;
+  padding: 37px 0 13px;
+  text-align: center;
+
+  p {
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  button {
+    padding: 6px 0;
+    width: 64px;
+  }
+}
