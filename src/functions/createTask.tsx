@@ -10,12 +10,12 @@ export const addTask = (
 ) => {
   if (titleValue !== "" && aboutValue !== "") {
     const newItem = [
-      ...todos,
       {
         id: uuidv4(),
         title: titleValue,
         about: aboutValue,
       },
+      ...todos,
     ];
 
     setTitleValue("");
