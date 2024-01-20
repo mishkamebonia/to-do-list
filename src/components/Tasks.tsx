@@ -1,7 +1,8 @@
 import "./Tasks.scss";
+import { useState } from "react";
 import { TodoProps } from "../App";
 import { removeTask } from "../functions/removeTask";
-import { useState } from "react";
+import { toggleAccordion } from "../functions/accordionTask";
 
 const Task = ({ todos, setTodos }: TodoProps) => {
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
@@ -10,13 +11,8 @@ const Task = ({ todos, setTodos }: TodoProps) => {
     removeTask(id, { todos, setTodos });
   };
 
-  const toggleAccordion = (id: string) => {
-    if (id === activeAccordion) {
-      setActiveAccordion(null);
-    } else {
-      setActiveAccordion(id);
-    }
-    console.log(activeAccordion);
+  const handleToggleAccordion = (id: string) => {
+    toggleAccordion(id, { activeAccordion, setActiveAccordion });
   };
 
   return (
@@ -29,7 +25,10 @@ const Task = ({ todos, setTodos }: TodoProps) => {
         todos.map((todo) => {
           return (
             <div key={todo.id} className="task">
-              <div className="display" onClick={() => toggleAccordion(todo.id)}>
+              <div
+                className="display"
+                onClick={() => handleToggleAccordion(todo.id)}
+              >
                 <section>
                   <h3>{todo.title}</h3>
                   <p>{todo.about}</p>
