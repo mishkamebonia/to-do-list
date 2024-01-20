@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
 import Form from "./components/Form";
 import Tasks from "./components/Tasks";
@@ -14,8 +14,15 @@ export interface TodoProps {
   setTodos: React.Dispatch<React.SetStateAction<TodoObject[]>>;
 }
 
+const initialTodosRaw = localStorage.getItem("todos");
+const initialTodos = initialTodosRaw ? JSON.parse(initialTodosRaw) : null;
+
 function App() {
-  const [todos, setTodos] = useState<TodoObject[]>([]);
+  const [todos, setTodos] = useState<TodoObject[]>(initialTodos);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div>
