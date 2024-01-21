@@ -1,16 +1,16 @@
-import "./Alert.scss";
+import "./AlertRemove.scss";
 import { TodoObject } from "../App";
 
 interface alertProps {
   id: string;
   todos: TodoObject[];
   setTodos: React.Dispatch<React.SetStateAction<TodoObject[]>>;
-  activeAlert: string | null;
-  setActiveAlert: React.Dispatch<React.SetStateAction<string | null>>;
+  removeAlert: string | null;
+  setRemoveAlert: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const Alert = (props: alertProps) => {
-  const { id, todos, setTodos, activeAlert, setActiveAlert } = props;
+  const { id, todos, setTodos, removeAlert, setRemoveAlert } = props;
 
   const onSubmit = (id: string) => {
     const findId = todos.filter((todo: TodoObject) => todo.id !== id);
@@ -18,8 +18,8 @@ const Alert = (props: alertProps) => {
   };
 
   const onCancel = (id: string) => {
-    if (id === activeAlert) {
-      setActiveAlert(null);
+    if (id === removeAlert) {
+      setRemoveAlert(null);
     }
   };
 
