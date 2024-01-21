@@ -14,7 +14,7 @@
   width: 100%;
 }
 
-.display {
+.card-todo {
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -33,7 +33,7 @@
     font-size: 14px;
   }
 
-  section {
+  .description {
     flex: 1;
     padding: 16px;
     overflow: hidden;

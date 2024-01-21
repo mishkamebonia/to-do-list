@@ -29,11 +29,14 @@ const Task = (props: TodoProps) => {
         todos.map((todo) => {
           return (
             <div key={todo.id} className="task">
-              <div className="display">
-                <section onClick={() => handleToggleAccordion(todo.id)}>
+              <div className="card-todo">
+                <div
+                  className="description"
+                  onClick={() => handleToggleAccordion(todo.id)}
+                >
                   <h3>{todo.title}</h3>
                   <p>{todo.about}</p>
-                </section>
+                </div>
                 <button
                   onClick={() => handleAlertRemoveTask(todo.id)}
                   className="remove-btn"
