@@ -38,11 +38,26 @@ function App() {
     setTodos(newItem);
   };
 
+  const handleEditTodo = (id: string, title: string, about: string) => {
+    const updatedTodos = todos.map((todo) => {
+      if (id === todo.id) {
+        return {
+          ...todo,
+          title: title,
+          about: about,
+        };
+      }
+
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
+
   return (
     <div>
       <div className="container">
         <Form onCreateTodo={handleCreateTodo} />
-        <Tasks todos={todos} setTodos={setTodos} />
+        <Tasks todos={todos} setTodos={setTodos} onEditTodo={handleEditTodo} />
       </div>
     </div>
   );
