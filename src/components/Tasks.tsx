@@ -12,7 +12,10 @@ const Task = (props: TodoProps) => {
   const [removeAlert, setRemoveAlert] = useState<string | null>(null);
   const [editAlert, setEditAlert] = useState<string | null>(null);
 
-  const handleAlertRemoveTask = (e, id: string) => {
+  const handleAlertRemoveTask = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string
+  ) => {
     e.stopPropagation();
     alertRemoveTask(id, removeAlert, setRemoveAlert);
   };
