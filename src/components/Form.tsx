@@ -1,19 +1,21 @@
 import "./Form.scss";
-import { TodoProps } from "../App";
 import { useState } from "react";
-import { addTask } from "../functions/createTask";
 
-const Form = (props: TodoProps) => {
-  const { todos, setTodos } = props;
+interface Props {
+  onCreateTodo: (title: string, about: string) => void;
+}
+const Form = (props: Props) => {
+  const { onCreateTodo } = props;
 
   const [titleValue, setTitleValue] = useState("");
   const [aboutValue, setAboutValue] = useState("");
 
   const handleAddTask = () => {
-    addTask(titleValue, setTitleValue, aboutValue, setAboutValue, {
-      todos,
-      setTodos,
-    });
+    if (titleValue !== "" && aboutValue !== "") {
+      onCreateTodo(titleValue, aboutValue);
+      setTitleValue("");
+      setAboutValue("");
+    }
   };
 
   return (
@@ -32,7 +34,7 @@ const Form = (props: TodoProps) => {
           onChange={(e) => setAboutValue(e.target.value)}
         />
       </section>
-      <button onClick={handleAddTask}>
+      <button onClick={() => handleAddTask()}>
         <i className="fa-solid fa-plus"></i>
       </button>
     </div>

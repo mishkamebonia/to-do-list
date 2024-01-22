@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
+import { v4 as uuidv4 } from "uuid";
 import Form from "./components/Form";
 import Tasks from "./components/Tasks";
 
@@ -18,16 +19,29 @@ const initialTodosRaw = localStorage.getItem("todos");
 const initialTodos = initialTodosRaw ? JSON.parse(initialTodosRaw) : null;
 
 function App() {
-  const [todos, setTodos] = useState<TodoObject[]>(initialTodos);
+  const [todos, setTodos] = useState<TodoObject[]>(initialTodos || []);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  const handleCreateTodo = (title: string, about: string) => {
+    const newItem = [
+      {
+        id: uuidv4(),
+        title: title,
+        about: about,
+      },
+      ...todos,
+    ];
+
+    setTodos(newItem);
+  };
+
   return (
     <div>
       <div className="container">
-        <Form todos={todos} setTodos={setTodos} />
+        <Form onCreateTodo={handleCreateTodo} />
         <Tasks todos={todos} setTodos={setTodos} />
       </div>
     </div>

@@ -3,20 +3,34 @@ import { useState } from "react";
 import { TodoProps } from "../App";
 import { alertRemoveTask } from "../functions/alertRemoveTask";
 import { toggleAccordion } from "../functions/accordionTask";
-import Alert from "./Alert";
+import AlertRemove from "./AlertRemove";
 
 const Task = (props: TodoProps) => {
   const { todos, setTodos } = props;
 
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
-  const [activeAlert, setActiveAlert] = useState<string | null>(null);
+  const [removeAlert, setRemoveAlert] = useState<string | null>(null);
+  const [editAlert, setEditAlert] = useState<string | null>(null);
 
   const handleAlertRemoveTask = (id: string) => {
-    alertRemoveTask(id, activeAlert, setActiveAlert);
+    alertRemoveTask(id, removeAlert, setRemoveAlert);
   };
 
   const handleToggleAccordion = (id: string) => {
     toggleAccordion(id, activeAccordion, setActiveAccordion);
+  };
+
+  // ! edit
+  const handleEditModule = (id: string) => {
+    if (id === editAlert) {
+      setEditAlert(null);
+    } else {
+      setEditAlert(id);
+    }
+  };
+
+  const onClickEditSubmit = (id: string) => {
+    console.log(id);
   };
 
   return (
@@ -52,19 +66,28 @@ const Task = (props: TodoProps) => {
                   <button>
                     <i className="fa-solid fa-info"></i>
                   </button>
-                  <button>
+                  <button onClick={() => handleEditModule(todo.id)}>
                     <i className="fa-solid fa-pen"></i>
                   </button>
                 </div>
               )}
-              {activeAlert === todo.id && (
-                <Alert
+              {removeAlert === todo.id && (
+                <AlertRemove
                   id={todo.id}
                   todos={todos}
                   setTodos={setTodos}
-                  activeAlert={activeAlert}
-                  setActiveAlert={setActiveAlert}
-                ></Alert>
+                  removeAlert={removeAlert}
+                  setRemoveAlert={setRemoveAlert}
+                ></AlertRemove>
+              )}
+              {editAlert === todo.id && (
+                <div>
+                  <input type="text" value={todo.title} on />
+                  <textarea cols="30" rows="10" value={todo.about}></textarea>
+                  <button onClick={() => onClickEditSubmit(todo.id)}>
+                    edit
+                  </button>
+                </div>
               )}
             </div>
           );
