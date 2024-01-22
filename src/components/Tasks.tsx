@@ -89,7 +89,11 @@ const Task = (props: Props) => {
                 ></AlertRemove>
               )}
               {editAlert === todo.id && (
-                <EditForm todo={todo} onEditTodo={onEditTodo} />
+                <EditForm
+                  todo={todo}
+                  onEditTodo={onEditTodo}
+                  setEditAlert={setEditAlert}
+                />
               )}
             </div>
           );
