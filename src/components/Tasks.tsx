@@ -1,13 +1,21 @@
 import "./Tasks.scss";
 import { useState } from "react";
-import { TodoProps } from "../App";
 import { alertRemoveTask } from "../functions/alertRemoveTask";
 import { toggleAccordion } from "../functions/accordionTask";
+import { TodoObject } from "../App";
 import AlertRemove from "./AlertRemove";
+import EditForm from "./EditForm";
 
-const Task = (props: TodoProps) => {
-  const { todos, setTodos } = props;
+interface Props {
+  todos: TodoObject[];
+  setTodos: React.Dispatch<React.SetStateAction<TodoObject[]>>;
+  onEditTodo: (id: string, title: string, about: string) => void;
+}
 
+const Task = (props: Props) => {
+  const { todos, setTodos, onEditTodo } = props;
+
+  // accordeons
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
   const [removeAlert, setRemoveAlert] = useState<string | null>(null);
   const [editAlert, setEditAlert] = useState<string | null>(null);
@@ -31,10 +39,6 @@ const Task = (props: TodoProps) => {
     } else {
       setEditAlert(id);
     }
-  };
-
-  const onClickEditSubmit = (id: string) => {
-    console.log(id);
   };
 
   return (
@@ -85,13 +89,7 @@ const Task = (props: TodoProps) => {
                 ></AlertRemove>
               )}
               {editAlert === todo.id && (
-                <div>
-                  <input type="text" value={todo.title} on />
-                  <textarea cols="30" rows="10" value={todo.about}></textarea>
-                  <button onClick={() => onClickEditSubmit(todo.id)}>
-                    edit
-                  </button>
-                </div>
+                <EditForm todo={todo} onEditTodo={onEditTodo} />
               )}
             </div>
           );
