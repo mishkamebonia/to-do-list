@@ -12,7 +12,8 @@ const Task = (props: TodoProps) => {
   const [removeAlert, setRemoveAlert] = useState<string | null>(null);
   const [editAlert, setEditAlert] = useState<string | null>(null);
 
-  const handleAlertRemoveTask = (id: string) => {
+  const handleAlertRemoveTask = (e, id: string) => {
+    e.stopPropagation();
     alertRemoveTask(id, removeAlert, setRemoveAlert);
   };
 
@@ -43,16 +44,16 @@ const Task = (props: TodoProps) => {
         todos.map((todo) => {
           return (
             <div key={todo.id} className="task">
-              <div className="card-todo">
-                <div
-                  className="description"
-                  onClick={() => handleToggleAccordion(todo.id)}
-                >
+              <div
+                className="card-todo"
+                onClick={() => handleToggleAccordion(todo.id)}
+              >
+                <div className="description">
                   <h3>{todo.title}</h3>
                   <p>{todo.about}</p>
                 </div>
                 <button
-                  onClick={() => handleAlertRemoveTask(todo.id)}
+                  onClick={(e) => handleAlertRemoveTask(e, todo.id)}
                   className="remove-btn"
                 >
                   <i className="fa-solid fa-xmark"></i>
