@@ -18,7 +18,7 @@ const EditForm = (props: Props) => {
     setChangedTitle(e.currentTarget.value);
   };
 
-  const changeAboutValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeAboutValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setChangedAbout(e.currentTarget.value);
   };
 
