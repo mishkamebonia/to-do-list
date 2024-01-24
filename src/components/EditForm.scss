@@ -1,0 +1,53 @@
+@import "../scss/colors.scss";
+
+.edit-form {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 100;
+  width: 400px;
+  border-radius: 8px;
+  background: $mainBG;
+  padding: 18px;
+  text-align: center;
+
+  input,
+  textarea {
+    width: 100%;
+    background: $lightBG;
+    color: $mainTextColor;
+    padding: 7px 14px;
+    border: 1px solid $markColor;
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+
+    &:first-child {
+      margin-bottom: 6px;
+    }
+  }
+
+  textarea {
+    margin-top: 8px;
+    resize: none;
+    height: 325px;
+  }
+
+  button {
+    padding: 6px 0;
+    width: 64px;
+    background: $lightBG;
+    color: $mainTextColor;
+  }
+
+  .row {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+}
